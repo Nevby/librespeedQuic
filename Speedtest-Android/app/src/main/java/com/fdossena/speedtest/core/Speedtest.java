@@ -12,12 +12,16 @@ import java.util.ArrayList;
 
 import com.fdossena.speedtest.core.config.SpeedtestConfig;
 import com.fdossena.speedtest.core.config.TelemetryConfig;
+import com.fdossena.speedtest.core.congestionControlSelector.CCA;
 import com.fdossena.speedtest.core.serverSelector.ServerSelector;
 import com.fdossena.speedtest.core.serverSelector.TestPoint;
+import com.fdossena.speedtest.core.transportProtocolSelector.TP;
 import com.fdossena.speedtest.core.worker.SpeedtestWorker;
 
 public class Speedtest {
     private ArrayList<TestPoint> servers=new ArrayList<>();
+    private ArrayList<TP> transportProtocols=new ArrayList<TP>();
+    private ArrayList<CCA> congestionControlAlgorithms=new ArrayList<CCA>();
     private TestPoint selectedServer=null;
     private SpeedtestConfig config=new SpeedtestConfig();
     private TelemetryConfig telemetryConfig=new TelemetryConfig();
@@ -76,6 +80,63 @@ public class Speedtest {
                 }
         }
     }
+
+    /* Modified - Transport protocol selection */
+    public void addTransportProtocol(TP t){
+        synchronized (mutex) {
+            if (state == 0) state = 1;
+            if (state > 1) throw new IllegalStateException("Cannot add test points at this moment");
+            transportProtocols.add(t);
+        }
+    }
+
+    public void addTransportProtocols(TP[] s){
+        synchronized (mutex) {
+            for (TP t : s) addTransportProtocol(t);
+        }
+    }
+
+    public void addTransportProtocol(JSONObject json){
+        synchronized (mutex) {
+            addTransportProtocol(new TP(json));
+        }
+    }
+
+    public TP[] getTransportProtocols(){
+        synchronized (mutex) {
+            return transportProtocols.toArray(new TP[0]);
+        }
+    }
+    /* Modified - Transport protocol selection */
+
+
+    /* Modified - Congestion Control Algorithms selection */
+    public void addCongestionControlAlgorithm(CCA t){
+        synchronized (mutex) {
+            if (state == 0) state = 1;
+            if (state > 1) throw new IllegalStateException("Cannot add test points at this moment");
+            congestionControlAlgorithms.add(t);
+        }
+    }
+
+    public void addCongestionControlAlgorithms(CCA[] s){
+        synchronized (mutex) {
+            for (CCA t : s) addCongestionControlAlgorithm(t);
+        }
+    }
+
+    public void addCongestionControlAlgorithm(JSONObject json){
+        synchronized (mutex) {
+            addCongestionControlAlgorithm(new CCA(json));
+        }
+    }
+
+    public CCA[] getCongestionControlAlgorithms(){
+        synchronized (mutex) {
+            return congestionControlAlgorithms.toArray(new CCA[0]);
+        }
+    }
+    /* Modified - Congestion Control Algorithms selection */
 
     private static class ServerListLoader {
         private static String read(String url){

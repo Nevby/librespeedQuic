@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.fdossena.speedtest.core.Speedtest;
 import com.fdossena.speedtest.core.config.SpeedtestConfig;
 import com.fdossena.speedtest.core.config.TelemetryConfig;
+import com.fdossena.speedtest.core.congestionControlSelector.CCA;
 import com.fdossena.speedtest.core.serverSelector.TestPoint;
 
 import org.json.JSONArray;
@@ -32,7 +33,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import your.name.here.speedtest.R;
+import com.caddy.speedtest.R;
+import com.fdossena.speedtest.core.transportProtocolSelector.TP;
 
 public class MainActivity extends Activity {
 
@@ -94,6 +96,8 @@ public class MainActivity extends Activity {
                 SpeedtestConfig config=null;
                 TelemetryConfig telemetryConfig=null;
                 TestPoint[] servers=null;
+                TP[] transportProtocols=null;
+                CCA[] congestionControls= null;
                 try{
                     String c=readFileFromAssets("SpeedtestConfig.json");
                     JSONObject o=new JSONObject(c);
@@ -128,6 +132,25 @@ public class MainActivity extends Activity {
                         servers=s.toArray(new TestPoint[0]);
                         st.addTestPoints(servers);
                     }
+
+                    /* Modified to add transport protocol selection */
+                    c=readFileFromAssets("TransportProtocolList.json");
+                    JSONArray b=new JSONArray(c);
+                    ArrayList<TP> s=new ArrayList<>();
+                    for(int i=0;i<b.length();i++) s.add(new TP(b.getJSONObject(i)));
+                    transportProtocols=s.toArray(new TP[0]);
+                    st.addTransportProtocols(transportProtocols);
+                    /* Modified to add transport protocol selection */
+
+                    /* Modified to add congestion control selection */
+                    c=readFileFromAssets("CongestionList.json");
+                    JSONArray d=new JSONArray(c);
+                    ArrayList<CCA> u=new ArrayList<>();
+                    for(int i=0;i<d.length();i++) u.add(new CCA(d.getJSONObject(i)));
+                    congestionControls=u.toArray(new CCA[0]);
+                    st.addCongestionControlAlgorithms(congestionControls);
+                    /* Modified to add congestion control selection */
+
                     final String testOrder=config.getTest_order();
                     runOnUiThread(new Runnable() {
                         @Override
@@ -192,7 +215,7 @@ public class MainActivity extends Activity {
                                         }
                                     });
                                 }else{
-                                    page_serverSelect(server,st.getTestPoints());
+                                    page_serverSelect(server,st.getTestPoints(), st.getTransportProtocols(), st.getCongestionControlAlgorithms());
                                 }
                             }
                         });
@@ -202,29 +225,64 @@ public class MainActivity extends Activity {
         }.start();
     }
 
-    private void page_serverSelect(TestPoint selected, TestPoint[] servers){
+    private void page_serverSelect(TestPoint selected, TestPoint[] servers, TP[] transportProtocols, CCA[] congestionControlAlgorithms){
         transition(R.id.page_serverSelect,TRANSITION_LENGTH);
         reinitOnResume=true;
         final ArrayList<TestPoint> availableServers=new ArrayList<>();
         for(TestPoint t:servers) {
             if (t.getPing() != -1) availableServers.add(t);
         }
-        int selectedId=availableServers.indexOf(selected);
-        final Spinner spinner=(Spinner)findViewById(R.id.serverList);
+        int selectedServerId=availableServers.indexOf(selected);
+        final Spinner spinnerServer=(Spinner)findViewById(R.id.serverList);
         ArrayList<String> options=new ArrayList<String>();
         for(TestPoint t:availableServers){
             options.add(t.getName());
         }
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,options.toArray(new String[0]));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setSelection(selectedId);
+        spinnerServer.setAdapter(adapter);
+        spinnerServer.setSelection(selectedServerId);
+
+        /*Modified - Spinner for selection of Transport protocol */
+        final ArrayList<TP> availableTPs=new ArrayList<>();
+        for(TP u:transportProtocols) {
+            availableTPs.add(u);
+        }
+        int selectedTPId=availableTPs.indexOf(selected);
+        final Spinner spinnerTransportProtocol=(Spinner)findViewById(R.id.transportProtocolList);
+        ArrayList<String> optionsTransportProtocol=new ArrayList<String>();
+        for(TP u:availableTPs){
+            optionsTransportProtocol.add(u.getName());
+        }
+        ArrayAdapter<String> adapterTP=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,optionsTransportProtocol.toArray(new String[0]));
+        adapterTP.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTransportProtocol.setAdapter(adapterTP);
+        spinnerTransportProtocol.setSelection(selectedTPId);
+        /*Modified - Spinner for selection of Transport protocol */
+
+        /*Modified - Spinner for selection of Congestion Control Algorithm */
+        final ArrayList<CCA> availableCCAs=new ArrayList<>();
+        for(CCA u:congestionControlAlgorithms) {
+            availableCCAs.add(u);
+        }
+        int selectedCCAId=availableCCAs.indexOf(selected);
+        final Spinner spinnerCCA=(Spinner)findViewById(R.id.congestionControl);
+        ArrayList<String> optionsCCA=new ArrayList<String>();
+        for(CCA u:availableCCAs){
+            optionsCCA.add(u.getName());
+        }
+        ArrayAdapter<String> adapterCCA=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,optionsCCA.toArray(new String[0]));
+        adapterCCA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCCA.setAdapter(adapterCCA);
+        spinnerCCA.setSelection(selectedCCAId);
+        /*Modified - Spinner for selection of Congestion Control Algorithm */
+
         final Button b=(Button)findViewById(R.id.start);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 reinitOnResume=false;
-                page_test(availableServers.get(spinner.getSelectedItemPosition()));
+                page_test(availableServers.get(spinnerServer.getSelectedItemPosition()), availableTPs.get(spinnerTransportProtocol.getSelectedItemPosition()), availableCCAs.get(spinnerCCA.getSelectedItemPosition()));
                 b.setOnClickListener(null);
             }
         });
@@ -251,10 +309,10 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void page_test(final TestPoint selected){
+    private void page_test(final TestPoint selectedServer, final TP selectedTP, final CCA selectedCCA){
         transition(R.id.page_test,TRANSITION_LENGTH);
-        st.setSelectedServer(selected);
-        ((TextView)findViewById(R.id.serverName)).setText(selected.getName());
+        st.setSelectedServer(selectedServer);
+        ((TextView)findViewById(R.id.serverName)).setText(selectedServer.getName() + "\n\n" + selectedTP.getName() + "\n\n" + selectedCCA.getName());
         ((TextView)findViewById(R.id.dlText)).setText(format(0));
         ((TextView)findViewById(R.id.ulText)).setText(format(0));
         ((TextView)findViewById(R.id.pingText)).setText(format(0));
@@ -395,8 +453,8 @@ public class MainActivity extends Activity {
                         b.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                page_init();
-                                b.setOnClickListener(null);
+                            page_init();
+                            b.setOnClickListener(null);
                             }
                         });
                     }

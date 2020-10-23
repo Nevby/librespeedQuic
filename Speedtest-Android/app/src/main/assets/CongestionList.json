@@ -1,6 +1,6 @@
 [
   {
-    "name":"Helsinki, Finland",
+    "name":"CUBIC",
     "server":"http://fi.openspeed.org/",
     "dlURL":"garbage.php",
     "ulURL":"empty.php",
@@ -8,7 +8,15 @@
     "getIpURL":"getIP.php"
   },
   {
-    "name":"Apache2 Ubuntu Local",
+    "name":"BBR",
+    "server":"http://192.168.176.128/",
+    "dlURL":"backend/garbage.php",
+    "ulURL":"backend/empty.php",
+    "pingURL":"backend/empty.php",
+    "getIpURL":"backend/getIP.php"
+  },
+  {
+    "name":"Reno",
     "server":"http://192.168.176.128/",
     "dlURL":"backend/garbage.php",
     "ulURL":"backend/empty.php",
