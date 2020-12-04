@@ -12,4 +12,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.Picker" parent="android:Theme.Material.Light.DarkActionBar" >
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
 </resources>

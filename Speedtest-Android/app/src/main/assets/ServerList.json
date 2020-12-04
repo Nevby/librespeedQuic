@@ -1,18 +1,38 @@
 [
   {
-    "name":"Helsinki, Finland",
+    "name":"Quic Speedtest Server",
+    "server":"https://quicspeedapp.space/",
+    "dlURL":"test/speedtest/backend/garbage.php",
+    "ulURL":"test/speedtest/backend/empty.php",
+    "pingURL":"test/speedtest/backend/empty.php",
+    "getIpURL":"test/speedtest/backend/getIP.php",
+    "tp":"QUIC"
+  },
+  {
+    "name":"Nginx PHP TCP Server KAU",
+    "server":"http://130.243.27.214:8080/",
+    "dlURL":"test/speedtest/backend/garbage.php",
+    "ulURL":"test/speedtest/backend/empty.php",
+    "pingURL":"test/speedtest/backend/empty.php",
+    "getIpURL":"test/speedtest/backend/getIP.php",
+    "tp":"TCP"
+  },
+  {
+    "name":"Nginx PHP TCP Server",
+    "server":"http://35.232.102.223/",
+    "dlURL":"test/speedtest/backend/garbage.php",
+    "ulURL":"test/speedtest/backend/empty.php",
+    "pingURL":"test/speedtest/backend/empty.php",
+    "getIpURL":"test/speedtest/backend/getIP.php",
+    "tp":"TCP"
+  },
+  {
+    "name":"Librespeed TCP Server",
     "server":"http://fi.openspeed.org/",
     "dlURL":"garbage.php",
     "ulURL":"empty.php",
     "pingURL":"empty.php",
-    "getIpURL":"getIP.php"
-  },
-  {
-    "name":"Apache2 Ubuntu Local",
-    "server":"http://192.168.176.128/",
-    "dlURL":"backend/garbage.php",
-    "ulURL":"backend/empty.php",
-    "pingURL":"backend/empty.php",
-    "getIpURL":"backend/getIP.php"
+    "getIpURL":"getIP.php",
+    "tp":"TCP"
   }
 ]

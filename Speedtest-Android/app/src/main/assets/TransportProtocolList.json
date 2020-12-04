@@ -14,13 +14,5 @@
     "ulURL":"backend/empty.php",
     "pingURL":"backend/empty.php",
     "getIpURL":"backend/getIP.php"
-  },
-  {
-    "name":"UDP",
-    "server":"http://192.168.176.128/",
-    "dlURL":"backend/garbage.php",
-    "ulURL":"backend/empty.php",
-    "pingURL":"backend/empty.php",
-    "getIpURL":"backend/getIP.php"
   }
 ]

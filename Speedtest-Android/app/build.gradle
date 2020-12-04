@@ -4,8 +4,8 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.0"
     defaultConfig {
-        applicationId 'com.caddy.speedtest'
-        minSdkVersion 17
+        applicationId 'com.group3b.com.group3.speedtest'
+        minSdkVersion 24
         targetSdkVersion 28
         versionCode 8
         versionName '1.2.2'

@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "your.name.here.speedtest",
+  "applicationId": "com.group3b.com.group3.speedtest",
   "variantName": "release",
   "elements": [
     {
