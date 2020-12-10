@@ -39,7 +39,7 @@ Android 4.0.3 and up (SDK 15), all architectures.
 ## Server requirements
 One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) installed for TCP testing. For QUIC testing follow the setup instructions in the server side
 
-## Setup Instructions
+## Setup Instructions Server
 
 ### Requirements for hosting the backend server
 * Docker engine and docker compose installed on machine.
@@ -49,6 +49,10 @@ One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) i
 To enable QUIC support on the NGNIX server, you’ll need to add the certificate and the private key as a volume when mounting the container. The NGNIX configuration file specifies the ssl_certificate as the path /opt/NGNIX/certs/live/”youdomain”/fullchain.pem as well as ssl_certificate:key at the path /opt/NGNIX/certs/live/”youdomain”/privkey.pem.  This is most easily done by using certbot. See the example docker-compose.yml files in the folder XXXX to see the example configuration for the php-fpm, NGNIX-QUIC and NGNIX-TCP containers. 
 
 The run the command sudo docker-compose up -d, -d stands for detached mode which allows the containers to run in the background. Keep in mind that you’ll probably need to open the firewall for UDP traffic at port 443.
+
+## Setup Instructions Client
+
+This part is easy! Just clone the repository and run it in Android studio!
 
 ## Donate
 [![Donate with Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/fdossena/donate)  
