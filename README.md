@@ -1,9 +1,13 @@
 ![LibreSpeed-Android Logo](https://github.com/adolfintel/speedtest-android/blob/master/.github/Readme-Logo.png?raw=true)
  
-# LibreSpeed Android Template (QUIC)
+# LibreSpeed Android QUIC
 The Speedtest Android template allows you to configure and distribute an Android app that performs a speedtest using your existing [LibreSpeed](https://github.com/librespeed/speedtest) server(s).
 
 The template is easy to configure, customize and distribute.
+
+## Disclaimer
+
+This repository is the result of a university project where the implementation of QUIC was the goal. Due to time constraints there are no guarantees quality wise. Hopefully one of you will take up the torch and continue the work!
 
 ## Try it
 
@@ -34,6 +38,17 @@ Android 4.0.3 and up (SDK 15), all architectures.
 
 ## Server requirements
 One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) installed for TCP testing. For QUIC testing follow the setup instructions in the server side
+
+## Setup Instructions
+
+### Requirements for hosting the backend server
+Docker engine and docker compose installed on machine.
+Valid CA signed certificate in under to upgrade to HTTP/3, preferably certificate from Lets’s Encrypt as it provides a free valid CA signed certificate.
+Run backend server on Linux
+To enable QUIC support on the NGNIX server, you’ll need to add the certificate and the private key as a volume when mounting the container. The NGNIX configuration file specifies the ssl_certificate as the path /opt/NGNIX/certs/live/”youdomain”/fullchain.pem as well as ssl_certificate:key at the path /opt/NGNIX/certs/live/”youdomain”/privkey.pem.  This is most easily done by using certbot. See the example docker-compose.yml files in the folder XXXX to see the example configuration for the php-fpm, NGNIX-QUIC and NGNIX-TCP containers. 
+
+The run the command sudo docker-compose up -d, -d stands for detached mode which allows the containers to run in the background. Keep in mind that you’ll probably need to open the firewall for UDP traffic at port 443.
+
 
 ## Donate
 [![Donate with Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/fdossena/donate)  
