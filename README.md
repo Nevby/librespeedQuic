@@ -9,7 +9,7 @@ The template is easy to configure, customize and distribute.
 
 [<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/APK_format_icon.png" alt="Download APK" height="80">](https://f-droid.org/packages/com.dosse.speedtest/)
 
-Alternatively, you can [download a demo APK](https://downloads.fdossena.com/geth.php?r=speedtest-android-apk)
+Download the [demo APK](https://github.com/Nevby/speedTest/blob/master/speedTest-prototype.apk) to try it out!
 
 ## Compatibility
 Android 4.0.3 and up (SDK 15), all architectures.
