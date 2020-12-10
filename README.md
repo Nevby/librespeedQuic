@@ -1,13 +1,13 @@
 ![LibreSpeed-Android Logo](https://github.com/adolfintel/speedtest-android/blob/master/.github/Readme-Logo.png?raw=true)
  
-# LibreSpeed Android Template
+# LibreSpeed Android Template (QUIC)
 The Speedtest Android template allows you to configure and distribute an Android app that performs a speedtest using your existing [LibreSpeed](https://github.com/librespeed/speedtest) server(s).
 
 The template is easy to configure, customize and distribute.
- 
+
 ## Try it
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/APK_format_icon.png" alt="Download APK" height="80">](https://f-droid.org/packages/com.dosse.speedtest/)
+[<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/APK_format_icon.png" alt="Download APK" height="80">](https://github.com/Nevby/speedTest/blob/master/speedTest-prototype.apk)
 
 Download the [demo APK](https://github.com/Nevby/speedTest/blob/master/speedTest-prototype.apk) to try it out!
 
@@ -28,7 +28,8 @@ Android 4.0.3 and up (SDK 15), all architectures.
 * QUIC Support in Client
 * New containerized backend with QUIC support 
 * Parallel connections selection for TCP
-* 
+* Structures to add congestion control selection in the client
+
 
 ![Screenshot](https://github.com/librespeed/speedtest-android/blob/master/.github/screenshots.png?raw=true)
 
