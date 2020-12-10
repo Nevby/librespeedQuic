@@ -7,9 +7,9 @@ The template is easy to configure, customize and distribute.
 
 ## Disclaimer
 
-This repository is the result of a university project where the implementation of QUIC was the goal. Due to time constraints there are no guarantees quality wise. Hopefully one of you will take up the torch and continue the work!
+This repository is the result of a university project where the implementation of QUIC in the librespeed repo was the goal. Due to time constraints there are no guarantees quality- or accuracy wise. Hopefully one of you will take up the torch and continue the work!
 
-## Try it
+## Test it out!
 
 [<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/APK_format_icon.png" alt="Download APK" height="80">](https://github.com/Nevby/speedTest/blob/master/speedTest-prototype.apk)
 
