@@ -28,13 +28,12 @@ Android 4.0.3 and up (SDK 15), all architectures.
 * QUIC Support in Client
 * New containerized backend with QUIC support 
 * Parallel connections selection for TCP
-* Structures to add congestion control selection in the client
-
+* Functionality to add congestion control selection in the client
 
 ![Screenshot](https://github.com/Nevby/speedTest/blob/master/github_prototype.png?raw=true)
 
 ## Server requirements
-One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) installed.
+One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) installed for TCP testing. For QUIC testing follow the setup instructions in the server side
 
 ## Donate
 [![Donate with Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/fdossena/donate)  
