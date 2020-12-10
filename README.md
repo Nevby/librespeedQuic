@@ -31,7 +31,7 @@ Android 4.0.3 and up (SDK 15), all architectures.
 * Structures to add congestion control selection in the client
 
 
-![Screenshot](https://github.com/Nevby/speedtest/?raw=true)
+![Screenshot](https://github.com/Nevby/speedTest/blob/master/github_prototype.png?raw=true)
 
 ## Server requirements
 One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) installed.
