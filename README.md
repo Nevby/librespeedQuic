@@ -7,7 +7,7 @@ The template is easy to configure, customize and distribute.
  
 ## Try it
 
-[<img src="https://www.google.com/imgres?imgurl="https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa0%2FAPK_format_icon.png&imgrefurl=https%3A%2F%2Fsv.wikipedia.org%2Fwiki%2FAPK_(filformat)&tbnid=GgB8pmaijYSMgM&vet=12ahUKEwiYs_Lt5sPtAhVSvCoKHWhLDykQMygAegUIARCOAQ..i&docid=D00_cKn6uoIiRM&w=1024&h=1024&q=android%20apk&ved=2ahUKEwiYs_Lt5sPtAhVSvCoKHWhLDykQMygAegUIARCOAQ" alt="Download APK" height="80">](https://f-droid.org/packages/com.dosse.speedtest/)
+[<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/APK_format_icon.png" alt="Download APK" height="80">](https://f-droid.org/packages/com.dosse.speedtest/)
 
 Alternatively, you can [download a demo APK](https://downloads.fdossena.com/geth.php?r=speedtest-android-apk)
 
