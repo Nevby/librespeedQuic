@@ -7,8 +7,8 @@ The template is easy to configure, customize and distribute.
  
 ## Try it
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
+[<img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa0%2FAPK_format_icon.png&imgrefurl=https%3A%2F%2Fsv.wikipedia.org%2Fwiki%2FAPK_(filformat)&tbnid=GgB8pmaijYSMgM&vet=12ahUKEwiYs_Lt5sPtAhVSvCoKHWhLDykQMygAegUIARCOAQ..i&docid=D00_cKn6uoIiRM&w=1024&h=1024&q=android%20apk&ved=2ahUKEwiYs_Lt5sPtAhVSvCoKHWhLDykQMygAegUIARCOAQ"
+     alt="Download APK"
      height="80">](https://f-droid.org/packages/com.dosse.speedtest/)
 
 Alternatively, you can [download a demo APK](https://downloads.fdossena.com/geth.php?r=speedtest-android-apk)
@@ -25,6 +25,12 @@ Android 4.0.3 and up (SDK 15), all architectures.
 * Telemetry (optional)
 * Results sharing (optional)
 * Multiple Points of Test (optional)
+
+## New Features
+* QUIC Support in Client
+* New containerized backend with QUIC support 
+* Parallel connections selection for TCP
+* 
 
 ![Screenshot](https://github.com/librespeed/speedtest-android/blob/master/.github/screenshots.png?raw=true)
 
