@@ -58,7 +58,7 @@ This part is easy! Just clone the repository and run it in Android studio!
 
 ## Donate
 [![Donate with Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/fdossena/donate)  
-[Donate with PayPal](https://www.paypal.me/sineisochronic)  
+[Donate to librespeed's creators with PayPal](https://www.paypal.me/sineisochronic)  
 
 ## License
 Copyright (C) 2020 Federico Dossena
