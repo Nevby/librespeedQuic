@@ -215,27 +215,25 @@ public abstract class SpeedtestWorkerQuic extends Thread{
                         double progress = (t + bonusTDL) / (double) (config.getTime_dl_max() * 1000);
                         speed = (speed * 8 * config.getOverheadCompensationFactor()) / (config.getUseMebibits() ? 1048576.0 : 1000000.0);
                         dl = speed;
-                        //onDownloadUpdate(dl,0.0001*(System.currentTimeMillis()-start));
                         onDownloadUpdate(dl, progress>1?1:progress);
                         Log.d("dlTest: ","MODE_IN_PROGRESS progress = " +  0.00016*(System.currentTimeMillis()-startDl));
                     } else if (mode == MODE_ENDED) {
                         Log.d("dlTest: ","MODE_ENDED");
-                        stopDl = System.currentTimeMillis();
                         onDownloadUpdate(dl,1);
-                        Log.d("dlTest: ","Download: "+ "TO-DO"+ " (took "+(System.currentTimeMillis()-startDl)+"ms)");
+                        Log.d("dlTest: ","Download: "+ " (took "+(System.currentTimeMillis()-startDl)+"ms)");
                         break;
                     }
                     Utils.sleep(100);
                 }
             }
         }).start();
-    }
+    };
 
     private void pingUpdate() {
         nrOfPings++;
         totPing += (System.currentTimeMillis() - startPing - ((nrOfPings-1)*1000) - 200);
         Log.d("SpeedTestWorkerQuic", "Ping done. ping = " + (System.currentTimeMillis() - startPing - ((nrOfPings-1)*1000)) + ", nrOfPings =" + nrOfPings);
-    }
+    };
 
     private boolean getIPCalled=false;
     private void getIP(){

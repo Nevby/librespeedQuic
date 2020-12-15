@@ -1,0 +1,23 @@
+version: '3'
+  
+services:
+    nginx-quic:
+        image: niklasasberg/speedtest_app_ht2020:nginx-quic-p443
+        container_name: nginx-quic
+        ports:
+        - "443:443/tcp"
+        - "443:443/udp"
+        working_dir: /var/www/html
+        tty: true
+        volumes:
+                - /etc/letsencrypt/:/opt/nginx/certs/
+    php-fpm:
+        image: niklasasberg/speedtest_app_ht2020:asberg-fpm
+        container_name: php-fpm
+        ports:
+        - "9000:9000"
+        working_dir: /var/www/html
+        
+    
+
+    

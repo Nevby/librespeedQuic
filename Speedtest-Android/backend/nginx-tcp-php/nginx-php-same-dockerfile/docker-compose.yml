@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    nginx:
+        image: niklasasberg/speedtest_app_ht2020:nginx-php-p8080
+        container_name: nginx
+        ports:
+        - "8080:8080"
+        working_dir: /var/www/html      
+        links:
+        - php-fpm
+        tty: true
+    php-fpm:
+        image: niklasasberg/speedtest_app_ht2020:asberg-fpm
+        container_name: php-fpm
+        ports:
+        - "9000:9000"
+        working_dir: /var/www/html
+        
+    
+
+    

@@ -9,15 +9,6 @@
     "tp":"QUIC"
   },
   {
-    "name":"Nginx PHP TCP Server KAU",
-    "server":"http://130.243.27.214:8080/",
-    "dlURL":"test/speedtest/backend/garbage.php",
-    "ulURL":"test/speedtest/backend/empty.php",
-    "pingURL":"test/speedtest/backend/empty.php",
-    "getIpURL":"test/speedtest/backend/getIP.php",
-    "tp":"TCP"
-  },
-  {
     "name":"Nginx PHP TCP Server",
     "server":"http://35.232.102.223/",
     "dlURL":"test/speedtest/backend/garbage.php",

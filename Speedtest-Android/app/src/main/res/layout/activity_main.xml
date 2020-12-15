@@ -142,7 +142,7 @@
                 android:clickable="false"
                 android:popupBackground="#0C0C0C"
                 android:textSize="@dimen/text"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/transportProtocolList" />
