@@ -48,7 +48,7 @@ One or more servers with [LibreSpeed](https://github.com/librespeed/speedtest) i
 
 Link to container image on [Docker Hub](https://hub.docker.com/r/niklasasberg/speedtest_app_ht2020)
 
-To enable QUIC support on the NGNIX server, you’ll need to add the certificate and the private key as a volume when mounting the container. The NGNIX configuration file specifies the ssl_certificate as the path /opt/NGNIX/certs/live/”youdomain”/fullchain.pem as well as ssl_certificate:key at the path /opt/NGNIX/certs/live/”youdomain”/privkey.pem.  This is most easily done by using certbot. See the example docker-compose.yml files in the folder XXXX to see the example configuration for the php-fpm, NGNIX-QUIC and NGNIX-TCP containers. 
+To enable QUIC support on the NGNIX server, you’ll need to add the certificate and the private key as a volume when mounting the container. The NGNIX configuration file specifies the ssl_certificate as the path /opt/NGNIX/certs/live/”youdomain”/fullchain.pem as well as ssl_certificate:key at the path /opt/NGNIX/certs/live/”youdomain”/privkey.pem.  This is most easily done by using certbot. See the example docker-compose.yml files in the folder Speedtest-Android/backend/nginx-quic-php to see the example configuration for the php-fpm, NGNIX-QUIC and NGNIX-TCP containers. 
 
 The run the command sudo docker-compose up -d, -d stands for detached mode which allows the containers to run in the background. Keep in mind that you’ll probably need to open the firewall for UDP traffic at port 443.
 
