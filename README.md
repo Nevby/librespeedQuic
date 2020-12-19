@@ -54,11 +54,7 @@ The run the command sudo docker-compose up -d, -d stands for detached mode which
 
 ## Setup Instructions Client
 
-This part is easy! Just clone the repository and run it in Android studio!
-
-## Donate
-[![Donate with Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/fdossena/donate)  
-[Donate to librespeed's creators with PayPal](https://www.paypal.me/sineisochronic)  
+This part is easy! Just clone the repository and run it in Android studio! 
 
 ## License
 Copyright (C) 2020 Federico Dossena
